@@ -1,4 +1,4 @@
-# UsualSlider
+# UsualSlider (under construction)
 JQuery plugin for traditional slide show
 * Ie8 +
 * Supports auto sliding and stops auto sliding on mouseenter event
