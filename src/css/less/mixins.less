@@ -1,0 +1,23 @@
+/* MIXINS.less */
+.clearfix {
+    &:before, &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+.ib {
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+.opacity(@opacity: 1) {
+	@ieOpacity: (@opacity * 100);
+	filter: ~"alpha(opacity=@{ieOpacity})";
+	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(Opacity=@{ieOpacity})";
+	opacity: @opacity;
+}
