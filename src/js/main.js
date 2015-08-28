@@ -27,7 +27,7 @@
         }
     });
 
-    //Show public methods 'stop' and 'start' to manipulate auto sliding</h2>
+    //Show public methods 'stop' and 'start' to manipulate auto sliding
     $('.slider_4').jUsualSlider({
         slideClass: 'slider__item',
         btns: $('.slider_4 .slider__nav'),
