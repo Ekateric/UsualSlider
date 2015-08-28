@@ -354,22 +354,22 @@
     $.fn[pluginName] = function (params) {
 
         if (params === 'undefined' || typeof params === 'object' || typeof params === 'undefined') {
-            //Создаем новый экземпляр объекта плагина,
-            //если ранее плагин на этом объекте не был инициализирован
+            //РЎРѕР·РґР°РµРј РЅРѕРІС‹Р№ СЌРєР·РµРјРїР»СЏСЂ РѕР±СЉРµРєС‚Р° РїР»Р°РіРёРЅР°,
+            //РµСЃР»Рё СЂР°РЅРµРµ РїР»Р°РіРёРЅ РЅР° СЌС‚РѕРј РѕР±СЉРµРєС‚Рµ РЅРµ Р±С‹Р» РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅ
             return this.each(function() {
                 if (!$.data(this, 'plugin_' + pluginName)) {
                     $.data(this, 'plugin_' + pluginName, new UsualSlider(this, params));
                 }
             });
         } else if (typeof params === 'string' && params[0] !== '_' && params !== 'init') {
-            //Вызываем публичный метод
+            //Р’С‹Р·С‹РІР°РµРј РїСѓР±Р»РёС‡РЅС‹Р№ РјРµС‚РѕРґ
             if (Array.prototype.slice.call(arguments, 1).length == 0 && $.inArray(params, $.fn[pluginName].getters)) {
-                //Если нет параметров или вызван метод-геттер,
-                // то возвращаем значение, вместо ссылки на элемент
+                //Р•СЃР»Рё РЅРµС‚ РїР°СЂР°РјРµС‚СЂРѕРІ РёР»Рё РІС‹Р·РІР°РЅ РјРµС‚РѕРґ-РіРµС‚С‚РµСЂ,
+                // С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµРј Р·РЅР°С‡РµРЅРёРµ, РІРјРµСЃС‚Рѕ СЃСЃС‹Р»РєРё РЅР° СЌР»РµРјРµРЅС‚
                 var instance = $.data(this[0], 'plugin_' + pluginName);
                 return instance[params].apply(instance, Array.prototype.slice.call(arguments, 1));
             } else {
-                //Вызов обычного публичного метода
+                //Р’С‹Р·РѕРІ РѕР±С‹С‡РЅРѕРіРѕ РїСѓР±Р»РёС‡РЅРѕРіРѕ РјРµС‚РѕРґР°
                 return this.each(function() {
                     var instance = $.data(this, 'plugin_' + pluginName);
                     if (instance instanceof UsualSlider && typeof instance[params] === 'function') {
@@ -380,7 +380,7 @@
         }
     }
 
-    //Методы - геттеры
+    //РњРµС‚РѕРґС‹ - РіРµС‚С‚РµСЂС‹
     $.fn[pluginName].getters = [];
 
 })(jQuery, undefined, document);
