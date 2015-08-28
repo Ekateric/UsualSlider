@@ -5,7 +5,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>UsualSlider jQuery Plugin Demo</title>
+	<title>jUsualSlider jQuery Plugin Demo</title>
 	<meta name="description" content="JQuery plugin for traditional slide show">
 	<meta name="keywords" content="JQuery plugin, slide show, gallery, slider">
 	<meta name="viewport" content="width=960">
@@ -18,7 +18,7 @@
 			document.write(unescape("%3Cscript src='../js/vendor/jquery-1.10.2.min.js' type='text/javascript'%3E%3C/script%3E"));
 		}
 	</script>
-	<script src="../js/vendor/modernizr-2.8.3.custom.js"></script>
+	<script src="../js/vendor/modernizr.custom.js"></script>
 </head>
 <body>
 
@@ -27,15 +27,27 @@
 		<!-- Header -->
 		<header role="banner" class="header">
 			<div class = "container">
-				<h1 class="page-title"><span class="page-title__selection">UsualSlider</span> jQuery plugin</h1>
+				<h1 class="page-title"><span class="page-title__selection">jUsualSlider</span> jQuery plugin</h1>
 			</div>
 		</header>
 
 		<div class="maincontent">
 			<article class="content" role="main">
 				<div class="container">
+					<div class="description">
+						<p>JQuery plugin for traditional slide show.</p>
+						<ul>
+							<li>Ie8 + (graceful degradation)</li>
+							<li>Support touch</li>
+							<li>Responsive (width in percent)</li>
+							<li>Support auto sliding and stops auto sliding on mouseenter event and by public methods</li>
+							<li>Can start sliding on any slider element</li>
+							<li>Animation is set by css "transition" property</li>
+							<li>Can contain any html-content</li>
+						</ul>
+					</div>
 
-					<h2 class="example-title">Example1. Basic usage</h2>
+					<h2 class="example-title">Example 1. Basic usage</h2>
 					<div class="slider slider_1">
 						<ul class="slider__list">
 							<li class="slider__item">1</li>
@@ -45,6 +57,60 @@
 					</div>
 					<div class="code-example">
 						<pre><code class="code">$('.slider_1').usualSlider();</code></pre>
+					</div>
+
+					<h2 class="example-title">Example 2. Add navigation & change timer and animation time values</h2>
+					<div class="slider slider_2">
+						<ul class="slider__list">
+							<li class="slider__item">1</li>
+							<li class="slider__item">2</li>
+							<li class="slider__item">3</li>
+						</ul>
+						<div class="slider__nav slider__nav_left"></div>
+						<div class="slider__nav slider__nav_next"></div>
+						<ul class="slider__tabs">
+							<li class="slider__tabs__item" data-index="0"></li>
+							<li class="slider__tabs__item" data-index="1"></li>
+							<li class="slider__tabs__item" data-index="2"></li>
+						</ul>
+					</div>
+					<div class="code-example">
+						<pre><code class="code">$('.slider_2').jUsualSlider({ <br>&nbsp;slideClass: 'slider__item', <br>&nbsp;btns: $('.slider_2 .slider__nav'), <br>&nbsp;timerTime: 10000, <br>&nbsp;animationTime: 400, <br>&nbsp;tabs: true, <br>&nbsp;tabsElems: $('.slider_2 .slider__tabs__item') <br>});</code></pre>
+					</div>
+
+					<h2 class="example-title">Example 3. Change slides count per page & show callback method 'afterSlide' & disable auto sliding & change start position</h2>
+					<div class="slider slider_3">
+						<ul class="slider__list">
+							<li class="slider__item">1</li>
+							<li class="slider__item">2</li>
+							<li class="slider__item">3</li>
+							<li class="slider__item">4</li>
+							<li class="slider__item">5</li>
+							<li class="slider__item">6</li>
+							<li class="slider__item">7</li>
+						</ul>
+						<div class="slider__nav slider__nav_left"></div>
+						<div class="slider__nav slider__nav_next"></div>
+						<div class="slider__info">123</div>
+					</div>
+					<div class="code-example">
+						<pre><code class="code">$('.slider_3').jUsualSlider({ <br>&nbsp;slideClass: 'slider__item', <br>&nbsp;btns: $('.slider_3 .slider__nav'), <br>&nbsp;activeIndx: 4, <br>&nbsp;slidesPerPage: 4, <br>&nbsp;autoSlide: false, <br>&nbsp;afterSlide: function(indx) { <br>&nbsp;&nbsp;$('.slider_3 .slider__info').text('Slide ' + (indx + 1)) <br>&nbsp;} <br>});</code></pre>
+					</div>
+
+					<h2 class="example-title">Example 4. Show public methods 'stop' and 'start' to manipulate auto sliding (don't mouseover on slider if auto sliding is started)</h2>
+					<div class="slider slider_4">
+						<ul class="slider__list">
+							<li class="slider__item">1</li>
+							<li class="slider__item">2</li>
+							<li class="slider__item">3</li>
+						</ul>
+					</div>
+					<div class="btns-wrap">
+						<button type="button" class="slider-control slider-control_4 slider-control_stop">Stop</button>
+						<button type="button" class="slider-control slider-control_4 slider-control_start">Start</button>
+					</div>
+					<div class="code-example">
+						<pre><code class="code">$('.slider_4').jUsualSlider({ <br>&nbsp;slideClass: 'slider__item', <br>&nbsp;btns: $('.slider_4 .slider__nav'), <br>&nbsp;timerTime: 2000 <br>}); <br> <br>$('.slider-control_4').on('click', function(e) { <br>&nbsp;e.preventDefault(); <br>&nbsp;var $btn = $(this), <br>&nbsp;&nbsp;slider4 = $('.slider_4'); <br> <br>&nbsp;if ($btn.hasClass('slider-control_stop')) { <br>&nbsp;&nbsp;slider4.jUsualSlider('stop'); <br>&nbsp;} else if ($btn.hasClass('slider-control_start')) { <br>&nbsp;&nbsp;slider4.jUsualSlider('start'); <br>&nbsp;} <br>})</code></pre>
 					</div>
 				</div>
 			</article>
